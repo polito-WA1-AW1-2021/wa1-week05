@@ -12,9 +12,12 @@ function App() {
     <Container>
       <Row>
         <Col>
-          <MyButton lang='en' />
+          <MyButton lang='en' size={2}/>
           <MyButton lang='it' />
-          <MyButton />
+          <MyButton></MyButton>
+        </Col>
+        <Col>
+         {['en', 'it'].map((lg => <MyButton key={lg} lang={lg}/>))}
         </Col>
       </Row>
 

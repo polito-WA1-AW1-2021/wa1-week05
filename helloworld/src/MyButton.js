@@ -1,3 +1,6 @@
+import { useState } from "react";
+import Button from 'react-bootstrap/Button';
+
 const messages = {
     'en': 'Hello World',
     'it': 'Ciao Mondo'
@@ -5,18 +8,20 @@ const messages = {
 
 function MyButton(props) {
 
-    let text ;
-    if (props.lang===undefined)  {
-        text = "Hi";
-    } else {
-        text = messages[props.lang] ;
-    }
+    let [lang, setLang] = useState(props.lang || 'en');
+
     return (
-        <button>
-            {text || "Hi!"}
-        </button>
+        <Button onClick={(event) => {
+            if (lang === 'it')
+                setLang('en');
+                // lang = 'en' ; // WROOOONG
+            else
+                setLang('it');
+        }}>
+            {messages[lang]}
+        </Button>
     );
 
 }
 
-export default MyButton ;
+export default MyButton;
